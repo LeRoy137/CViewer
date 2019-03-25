@@ -1,0 +1,167 @@
+﻿<Window x:Class="CV.ChangeRecordWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CV"
+        mc:Ignorable="d"
+        Title="Изменить запись" Height="450" Width="800" Style="{StaticResource windowStyle}" SizeChanged="Window_SizeChanged">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="5">
+            <StackPanel Name="stackInputsName" Orientation="Horizontal">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource txtBlockStyle}">Фамилия</TextBlock>
+                    <TextBox Margin="5,2,5,0" MaxWidth="200" HorizontalAlignment="Left" Name="txtFirstName" Grid.Column="1" Style="{StaticResource txtBoxStyle}"></TextBox>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource txtBlockStyle}">Имя</TextBlock>
+                    <TextBox Name="txtSecondName" HorizontalAlignment="Left" MaxWidth="200" Margin="5,2,5,0" Grid.Column="1" Style="{StaticResource txtBoxStyle}"></TextBox>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource txtBlockStyle}">Отчество</TextBlock>
+                    <TextBox Name="txtLastName" HorizontalAlignment="Left" Grid.Column="1" MaxWidth="200" Margin="5,2,5,0" Style="{StaticResource txtBoxStyle}"></TextBox>
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Style="{StaticResource txtBlockStyle}">Дата рождения</TextBlock>
+            <DatePicker Foreground="Black" BorderBrush="{StaticResource borderBrush}" Name="datePickerBorn" Width="150" Grid.Column="1" Margin="5,0,0,0"></DatePicker>
+        </Grid>
+        <Grid Grid.Row="2" Margin="5">
+            <StackPanel Orientation="Horizontal" Name="stackPanelClinic">
+                <Grid Margin="0,2,5,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock VerticalAlignment="Center" Style="{StaticResource txtBlockStyle}" Grid.Column="0">Номер</TextBlock>
+                    <TextBox Name="txtNumber" IsReadOnly="True" MaxWidth="200" Margin="5,0,0,0" Style="{StaticResource txtBoxStyle}" Grid.Column="1"></TextBox>
+                </Grid>
+                <Grid Margin="0,2,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource txtBlockStyle}">Клиника</TextBlock>
+                    <ComboBox Name="cmbClinics" Margin="5,0,0,0" HorizontalAlignment="Stretch" Grid.Column="1" Style="{StaticResource cmbBoxStyle}">
+                    </ComboBox>
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock VerticalAlignment="Center" Style="{StaticResource txtBlockStyle}" Grid.Column="0">Диагноз</TextBlock>
+            <TextBox Name="txtDiagnosis" TextAlignment="Left" Style="{StaticResource txtBoxStyle}" Margin="5,0,0,0" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
+        </Grid>
+        <Grid Grid.Row="4" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="70"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Style="{StaticResource txtBlockStyle}">Дополнительная информация:</TextBlock>
+            <RichTextBox Name="richInformation" BorderBrush="{StaticResource borderBrush}" VerticalAlignment="Stretch" Grid.Row="1" FontSize="14" Margin="0,3,0,0" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <FlowDocument Name="docInformation">
+
+                </FlowDocument>
+                <RichTextBox.Resources>
+                    <Style TargetType="{x:Type Paragraph}">
+                        <Setter Property="Margin" Value="0"/>
+                    </Style>
+                </RichTextBox.Resources>
+            </RichTextBox>
+        </Grid>
+        <Grid Grid.Row="5" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock VerticalAlignment="Center" Grid.Row="0" Style="{StaticResource txtBlockStyle}">Фотографии:</TextBlock>
+            <Button Name="btnAddImages" Grid.Row="0" HorizontalAlignment="Right" Style="{StaticResource btnAddImageStyle}" Height="20" Width="20" Click="btnAddImages_Click" ToolTip="Добавить фотографии">
+                <Viewbox>
+                    <Grid Margin="10">
+                        <Grid Name="backgroundGrid" Width="256" Height="256" Visibility="Visible">
+                        </Grid>
+                        <Path Data="M245.2 40.03L244.83 40.07L244.46 40.12L244.09 40.19L243.73 40.27L243.37 40.37L243.02 40.48L242.68 40.6L242.34 40.73L242.01 40.88L241.69 
+41.04L241.37 41.21L241.06 41.4L240.76 41.59L240.47 41.8L240.18 42.02L239.9 42.24L239.64 42.48L239.38 42.73L239.13 42.99L238.89 43.25L238.67 
+43.53L238.45 43.82L238.24 44.11L238.05 44.41L237.86 44.72L237.69 45.04L237.53 45.36L237.38 45.69L237.25 46.03L237.13 46.37L237.02 46.72L236.92 
+47.08L236.84 47.44L236.77 47.81L236.72 48.18L236.68 48.55L236.66 48.93L236.65 49.32L236.65 235.65L50.32 235.65L49.93 235.66L49.55 235.68L49.18 
+235.72L48.81 235.77L48.44 235.84L48.08 235.92L47.72 236.02L47.37 236.13L47.03 236.25L46.69 236.38L46.36 236.53L46.04 236.69L45.72 236.86L45.41 
+237.05L45.11 237.24L44.82 237.45L44.53 237.67L44.25 237.89L43.99 238.13L43.73 238.38L43.48 238.64L43.24 238.9L43.02 239.18L42.8 239.47L42.59 
+239.76L42.4 240.06L42.21 240.37L42.04 240.69L41.88 241.01L41.73 241.34L41.6 241.68L41.48 242.02L41.37 242.37L41.27 242.73L41.19 243.09L41.12 
+243.46L41.07 243.83L41.03 244.2L41.01 244.58L41 244.97L41 394.03L41.01 394.42L41.03 394.8L41.07 395.17L41.12 395.54L41.19 395.91L41.27 396.27L41.37 
+396.63L41.48 396.98L41.6 397.32L41.73 397.66L41.88 397.99L42.04 398.31L42.21 398.63L42.4 398.94L42.59 399.24L42.8 399.53L43.02 399.82L43.24 400.1L43.48 
+400.36L43.73 400.62L43.99 400.87L44.25 401.11L44.53 401.33L44.82 401.55L45.11 401.76L45.41 401.95L45.72 402.14L46.04 402.31L46.36 402.47L46.69 402.62L47.03 
+402.75L47.37 402.87L47.72 402.98L48.08 403.08L48.44 403.16L48.81 403.23L49.18 403.28L49.55 403.32L49.93 403.34L50.32 403.35L236.65 403.35L236.65 589.68L236.66 
+590.07L236.68 590.45L236.72 590.82L236.77 591.19L236.84 591.56L236.92 591.92L237.02 592.28L237.13 592.63L237.25 592.97L237.38 593.31L237.53 593.64L237.69 
+593.96L237.86 594.28L238.05 594.59L238.24 594.89L238.45 595.18L238.67 595.47L238.89 595.75L239.13 596.01L239.38 596.27L239.64 596.52L239.9 596.76L240.18 
+596.98L240.47 597.2L240.76 597.41L241.06 597.6L241.37 597.79L241.69 597.96L242.01 598.12L242.34 598.27L242.68 598.4L243.02 598.52L243.37 598.63L243.73 
+598.73L244.09 598.81L244.46 598.88L244.83 598.93L245.2 598.97L245.58 598.99L245.97 599L395.03 599L395.42 598.99L395.8 598.97L396.17 598.93L396.54 
+598.88L396.91 598.81L397.27 598.73L397.63 598.63L397.98 598.52L398.32 598.4L398.66 598.27L398.99 598.12L399.31 597.96L399.63 597.79L399.94 597.6L400.24 
+597.41L400.53 597.2L400.82 596.98L401.1 596.76L401.36 596.52L401.62 596.27L401.87 596.01L402.11 595.75L402.33 595.47L402.55 595.18L402.76 594.89L402.95 
+594.59L403.14 594.28L403.31 593.96L403.47 593.64L403.62 593.31L403.75 592.97L403.87 592.63L403.98 592.28L404.08 591.92L404.16 591.56L404.23 591.19L404.28 
+590.82L404.32 590.45L404.34 590.07L404.35 589.68L404.35 403.35L590.68 403.35L591.07 403.34L591.45 403.32L591.82 403.28L592.19 403.23L592.56 403.16L592.92 
+403.08L593.28 402.98L593.63 402.87L593.97 402.75L594.31 402.62L594.64 402.47L594.96 402.31L595.28 402.14L595.59 401.95L595.89 401.76L596.18 401.55L596.47 
+401.33L596.75 401.11L597.01 400.87L597.27 400.62L597.52 400.36L597.76 400.1L597.98 399.82L598.2 399.53L598.41 399.24L598.6 398.94L598.79 398.63L598.96 
+398.31L599.12 397.99L599.27 397.66L599.4 397.32L599.52 396.98L599.63 396.63L599.73 396.27L599.81 395.91L599.88 395.54L599.93 395.17L599.97 394.8L599.99 
+394.42L600 394.03L600 244.97L599.99 244.58L599.97 244.2L599.93 243.83L599.88 243.46L599.81 243.09L599.73 242.73L599.63 242.37L599.52 242.02L599.4 
+241.68L599.27 241.34L599.12 241.01L598.96 240.69L598.79 240.37L598.6 240.06L598.41 239.76L598.2 239.47L597.98 239.18L597.76 238.9L597.52 238.64L597.27 
+238.38L597.01 238.13L596.75 237.89L596.47 237.67L596.18 237.45L595.89 237.24L595.59 237.05L595.28 236.86L594.96 236.69L594.64 236.53L594.31 236.38L593.97 
+236.25L593.63 236.13L593.28 236.02L592.92 235.92L592.56 235.84L592.19 235.77L591.82 235.72L591.45 235.68L591.07 235.66L590.68 235.65L404.35 235.65L404.35 
+49.32L404.34 48.93L404.32 48.55L404.28 48.18L404.23 47.81L404.16 47.44L404.08 47.08L403.98 46.72L403.87 46.37L403.75 46.03L403.62 45.69L403.47 45.36L403.31 
+45.04L403.14 44.72L402.95 44.41L402.76 44.11L402.55 43.82L402.33 43.53L402.11 43.25L401.87 42.99L401.62 42.73L401.36 42.48L401.1 42.24L400.82 42.02L400.53 
+41.8L400.24 41.59L399.94 41.4L399.63 41.21L399.31 41.04L398.99 40.88L398.66 40.73L398.32 40.6L397.98 40.48L397.63 40.37L397.27 40.27L396.91 40.19L396.54 
+40.12L396.17 40.07L395.8 40.03L395.42 40.01L395.03 40L245.97 40L245.58 40.01L245.2 40.03Z" Stretch="Uniform" Fill="#FF5A0BBD" Width="216" Height="216" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <TransformGroup.Children>
+                                        <RotateTransform Angle="0" />
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </TransformGroup.Children>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Grid>
+                </Viewbox>
+            </Button>
+            <Border Margin="0,5,0,0" BorderThickness="2" Grid.Row="1" Style="{StaticResource borderStyle}">
+                <ScrollViewer>
+                    <WrapPanel Name="listBoxPanel" Background="#FF83788B">
+
+                    </WrapPanel>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="6" Margin="5">
+            <Button Name="btnCancel" HorizontalAlignment="Left" Click="btnCancel_Click" Style="{StaticResource btnStyle}">Отмена</Button>
+            <Button Name="btnChange" HorizontalAlignment="Right" Click="btnChange_Click" Style="{StaticResource btnStyle}" >Изменить</Button>
+        </Grid>
+    </Grid>
+</Window>
