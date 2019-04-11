@@ -35,7 +35,6 @@ namespace CV
             _appRecord = record;
             SetRecordValues(record);
             SetRecordImages(record);
-
             AddClinicsNamesComboBox();
             Title = $"Просмотр записи: {record.Information}";
         }
@@ -80,7 +79,7 @@ namespace CV
             List<string> imageFiles = new List<string>();
             foreach (string filename in files)
             {
-                if (Regex.IsMatch(filename, @"(.jpg|.png|.bmp)$"))
+                if (Regex.IsMatch(filename.ToLower(), @"(.jpg|.png|.bmp|.jpeg)$"))
                     imageFiles.Add(filename);
             }
 
@@ -89,6 +88,7 @@ namespace CV
                 ImageFrame imageFrame = new ImageFrame(Frames.Count, imageFile, RemoveFrame);
                 Frames.Add(imageFrame);
                 listBoxPanel.Children.Add(imageFrame);
+
             }
         }
 

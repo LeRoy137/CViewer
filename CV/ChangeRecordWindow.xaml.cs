@@ -93,7 +93,7 @@ namespace CV
             List<string> imageFiles = new List<string>();
             foreach (string filename in files)
             {
-                if (Regex.IsMatch(filename, @"(.jpg|.png|.bmp)$"))
+                if (Regex.IsMatch(filename.ToLower(), @"(.jpg|.png|.bmp|.jpeg)$"))
                     imageFiles.Add(filename);
             }
 

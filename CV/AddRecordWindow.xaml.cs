@@ -34,7 +34,7 @@ namespace CV
             {
 
                 OpenFileDialog openFileDialog = new OpenFileDialog() { Multiselect = true };
-                openFileDialog.Filter = "Файлы изображений (*.bmp, *.jpg, *.png)|*.bmp;*.jpg;*.png";
+                openFileDialog.Filter = "Файлы изображений (*.bmp, *.jpg, *.png, *.jpeg)|*.bmp;*.jpg;*.png;*.jpeg";
                 openFileDialog.ShowDialog();
 
                 string[] imagesPath = openFileDialog.FileNames; // пути к файлам
