@@ -128,8 +128,13 @@ namespace CV
         // делегат удаления из контейнера
         private void RemoveFrame(ImageFrame imageFrame)
         {
-            Frames.Remove(imageFrame);
-            listBoxPanel.Children.Remove(imageFrame);
+            var result = MessageBox.Show("Удалить изображение?", "Удаление!", MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.Yes) // если да то удаляем
+            {
+                Frames.Remove(imageFrame);
+                listBoxPanel.Children.Remove(imageFrame);
+            }
         }
 
         private void SetInitParametrs()

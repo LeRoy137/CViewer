@@ -308,7 +308,7 @@ namespace CV
 
         public String Information
         {
-            get { return $"{_record.ShortFIO} [{_record.Diagnosis}]:"; }
+            get { return $"{_record.ShortFIO} \t({_record.Diagnosis}) \t: {_record.ClinicName} \t- {_record.DateCreated.ToShortDateString()}"; }
         }
 
         public AppRecord()
