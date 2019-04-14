@@ -26,7 +26,7 @@
             <MenuItem Header="Настройки" Name="menuSetting" Click="menuSetting_Click">
 
             </MenuItem>
-            <MenuItem Header="Справка" Visibility="Collapsed" Name="menuAbout" Click="menuAbout_Click">
+            <MenuItem Header="Справка"  Name="menuAbout" Click="menuAbout_Click">
 
             </MenuItem>
         </Menu>

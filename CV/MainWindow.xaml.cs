@@ -71,7 +71,15 @@ namespace CV
 
         private void menuAbout_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                AboutWindow aboutWindow = new AboutWindow();
+                aboutWindow.ShowDialog();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message + Environment.NewLine + ex.StackTrace, "Ошибка!!!");
+            }
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
