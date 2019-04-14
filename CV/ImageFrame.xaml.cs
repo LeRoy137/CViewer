@@ -69,6 +69,7 @@ namespace CV
             var stream = File.OpenRead(imagePath);
             _image.BeginInit();
             _image.CacheOption = BitmapCacheOption.OnLoad;
+            _image.DecodePixelWidth = 150;
             _image.StreamSource = stream;
             _image.EndInit();
             stream.Close();

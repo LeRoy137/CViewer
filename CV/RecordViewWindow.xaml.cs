@@ -70,26 +70,27 @@ namespace CV
 
         private void SetRecordImages(AppRecord appRecord)
         {
-            DirectoryInfo recordDir = new DirectoryInfo(appRecord.RecordPath);
-            String pathImages = System.IO.Path.Combine(recordDir.FullName, "Images");
+                    DirectoryInfo recordDir = new DirectoryInfo(appRecord.RecordPath);
+                    String pathImages = System.IO.Path.Combine(recordDir.FullName, "Images");
 
-            // *.bmp, *.jpg, *.png)|*.bmp;*.jpg;*.png" - фильтр
-            var files = Directory.GetFiles(pathImages, "*.*", SearchOption.AllDirectories);
+                    // *.bmp, *.jpg, *.png)|*.bmp;*.jpg;*.png" - фильтр
+                    var files = Directory.GetFiles(pathImages, "*.*", SearchOption.AllDirectories);
 
-            List<string> imageFiles = new List<string>();
-            foreach (string filename in files)
-            {
-                if (Regex.IsMatch(filename.ToLower(), @"(.jpg|.png|.bmp|.jpeg)$"))
-                    imageFiles.Add(filename);
-            }
+                    List<string> imageFiles = new List<string>();
+                    foreach (string filename in files)
+                    {
+                        if (Regex.IsMatch(filename.ToLower(), @"(.jpg|.png|.bmp|.jpeg)$"))
+                            imageFiles.Add(filename);
+                    }
 
-            foreach (var imageFile in imageFiles)
-            {
-                ImageFrame imageFrame = new ImageFrame(Frames.Count, imageFile, RemoveFrame);
-                Frames.Add(imageFrame);
-                listBoxPanel.Children.Add(imageFrame);
+                    
+                    foreach (var imageFile in imageFiles)
+                    {
 
-            }
+                                ImageFrame imageFrame = new ImageFrame(Frames.Count, imageFile, RemoveFrame);
+                                Frames.Add(imageFrame);
+                                listBoxPanel.Children.Add(imageFrame);
+                    }
         }
 
         // делегат удаления из контейнера
@@ -130,6 +131,11 @@ namespace CV
             {
 
             }
+        }
+
+        private void Window_ContentRendered(object sender, EventArgs e)
+        {
+            
         }
     }
 }

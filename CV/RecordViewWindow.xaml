@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CV"
         mc:Ignorable="d"
-        Title="Просмотр записи" Closing="Window_Closing" Height="450" Width="800" Style="{StaticResource windowStyle}">
+        Title="Просмотр записи" ContentRendered="Window_ContentRendered" Closing="Window_Closing" Height="450" Width="800" Style="{StaticResource windowStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -53,7 +53,11 @@
             <DatePicker IsEnabled="True" Foreground="Black" BorderBrush="{StaticResource borderBrush}" Name="datePickerBorn" Width="150" Grid.Column="1" Margin="5,0,0,0"></DatePicker>
         </Grid>
         <Grid Grid.Row="2" Margin="5">
-            <StackPanel Orientation="Horizontal" Name="stackPanelClinic">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="541*"/>
+                <ColumnDefinition Width="241*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Name="stackPanelClinic" Grid.ColumnSpan="2">
                 <Grid Margin="0,2,5,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"></ColumnDefinition>
