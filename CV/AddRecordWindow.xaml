@@ -103,13 +103,31 @@
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock VerticalAlignment="Center" Grid.Row="0" Style="{StaticResource txtBlockStyle}">Добавить фотографии:</TextBlock>
-            <Button Name="btnAddImages" Grid.Row="0" HorizontalAlignment="Right" Style="{StaticResource btnAddImageStyle}"  Height="20" Width="20"  Click="btnAddImages_Click" ToolTip="Добавить фотографии">
-                <Viewbox>
-                    <Grid Margin="10">
-                        <Grid Name="backgroundGrid" Width="256" Height="256" Visibility="Visible">
-                        </Grid>
-                        <Path Data="M245.2 40.03L244.83 40.07L244.46 40.12L244.09 40.19L243.73 40.27L243.37 40.37L243.02 40.48L242.68 40.6L242.34 40.73L242.01 40.88L241.69 
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock VerticalAlignment="Center" Grid.Column="0" Style="{StaticResource txtBlockStyle}">Добавить фотографии:</TextBlock>
+                <Grid Grid.Column="3" Margin="50,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="txtLoadImage" VerticalAlignment="Center" Style="{StaticResource txtBlockStyle}">
+                        Загрузка: (0 из 0)
+                    </TextBlock>
+                    <ProgressBar Style="{StaticResource progressBarStyle}" Name="progressImageLoad" Margin="10,3,0,3" Grid.Column="1" Width="300">
+                    </ProgressBar>
+                </Grid>
+                <Button Name="btnAddImages" Margin="15,0,15,0" Grid.Column="1" HorizontalAlignment="Right" Style="{StaticResource btnAddImageStyle}"  Height="20" Width="20"  Click="btnAddImages_Click" ToolTip="Добавить фотографии">
+                    <Viewbox>
+                        <Grid Margin="10">
+                            <Grid Name="backgroundGrid" Width="256" Height="256" Visibility="Visible">
+                            </Grid>
+                            <Path Data="M245.2 40.03L244.83 40.07L244.46 40.12L244.09 40.19L243.73 40.27L243.37 40.37L243.02 40.48L242.68 40.6L242.34 40.73L242.01 40.88L241.69 
 41.04L241.37 41.21L241.06 41.4L240.76 41.59L240.47 41.8L240.18 42.02L239.9 42.24L239.64 42.48L239.38 42.73L239.13 42.99L238.89 43.25L238.67 
 43.53L238.45 43.82L238.24 44.11L238.05 44.41L237.86 44.72L237.69 45.04L237.53 45.36L237.38 45.69L237.25 46.03L237.13 46.37L237.02 46.72L236.92 
 47.08L236.84 47.44L236.77 47.81L236.72 48.18L236.68 48.55L236.66 48.93L236.65 49.32L236.65 235.65L50.32 235.65L49.93 235.66L49.55 235.68L49.18 
@@ -139,18 +157,20 @@
 45.04L403.14 44.72L402.95 44.41L402.76 44.11L402.55 43.82L402.33 43.53L402.11 43.25L401.87 42.99L401.62 42.73L401.36 42.48L401.1 42.24L400.82 42.02L400.53 
 41.8L400.24 41.59L399.94 41.4L399.63 41.21L399.31 41.04L398.99 40.88L398.66 40.73L398.32 40.6L397.98 40.48L397.63 40.37L397.27 40.27L396.91 40.19L396.54 
 40.12L396.17 40.07L395.8 40.03L395.42 40.01L395.03 40L245.97 40L245.58 40.01L245.2 40.03Z" Stretch="Uniform" Fill="#FF5A0BBD" Width="216" Height="216" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
-                            <Path.RenderTransform>
-                                <TransformGroup>
-                                    <TransformGroup.Children>
-                                        <RotateTransform Angle="0" />
-                                        <ScaleTransform ScaleX="1" ScaleY="1" />
-                                    </TransformGroup.Children>
-                                </TransformGroup>
-                            </Path.RenderTransform>
-                        </Path>
-                    </Grid>
-                </Viewbox>
-            </Button>
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <TransformGroup.Children>
+                                            <RotateTransform Angle="0" />
+                                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                                        </TransformGroup.Children>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Grid>
+                    </Viewbox>
+                </Button>
+            </Grid>
+
             <Border Margin="0,5,0,0" BorderThickness="2" Grid.Row="1" Style="{StaticResource borderStyle}">
                 <ScrollViewer>
                     <WrapPanel Name="listBoxPanel" Background="#FF83788B">

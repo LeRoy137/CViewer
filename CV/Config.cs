@@ -16,8 +16,8 @@ namespace CV
             get { return _maxImageLoad; }
             set
             {
-                if (value <= 0 || value >= 15)
-                    throw new Exception("Максимальное число изображений для загрузки в пределах от 1 до 15");
+                if (value <= 0 || value > 20)
+                    throw new Exception("Максимальное число изображений для загрузки в пределах от 1 до 20");
 
                 _maxImageLoad = value;
             }

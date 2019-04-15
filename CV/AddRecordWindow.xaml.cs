@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Win32;
+using System.Threading;
 
 namespace CV
 {
@@ -28,7 +29,7 @@ namespace CV
             SetInitParametrs();
         }
 
-        private void btnAddImages_Click(object sender, RoutedEventArgs e)
+        private async void btnAddImages_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -45,18 +46,44 @@ namespace CV
                     return;
                 }
 
-                for (int i = 0; i < imagesPath.Length; i++)
-                {
-                    ImageFrame imageFrame = new ImageFrame(i, imagesPath[i], RemoveFrame);
-                    listBoxPanel.Children.Add(imageFrame);
-                    Frames.Add(imageFrame);
-                }
+               await GetImagesAsync(imagesPath);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.StackTrace, ex.Message);
             }
         }
+
+        private void AsyncMethod(int id, String imagePath, Action<ImageFrame> closeMethod)
+        {
+            ImageFrame imageFrame = new ImageFrame(id, imagePath, RemoveFrame);
+            listBoxPanel.Children.Add(imageFrame);
+            Frames.Add(imageFrame);
+        }
+        
+        private Task GetImagesAsync(String[] imagesPath)
+        {
+            progressImageLoad.Value = 0;
+            txtLoadImage.Text = "Загрузка: (0 из 0)";
+            return Task.Run((Action)(() =>
+            {
+                for (int i = 0; i < imagesPath.Length; i++)
+                {
+                    
+                    Dispatcher.Invoke((Action)(() =>
+                    {
+                        ImageFrame imageFrame = new ImageFrame(i, imagesPath[i], RemoveFrame);
+                        progressImageLoad.Value = (double)(i + 1) / imagesPath.Length * 100.0;
+                        txtLoadImage.Text = $"Загрузка: ({i+1} из {imagesPath.Length})";
+                        listBoxPanel.Children.Add(imageFrame);
+                        Frames.Add(imageFrame);
+                        
+                    }));
+                }
+            }
+            ));
+        }
+
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
