@@ -53,13 +53,6 @@ namespace CV
                 MessageBox.Show(ex.StackTrace, ex.Message);
             }
         }
-
-        private void AsyncMethod(int id, String imagePath, Action<ImageFrame> closeMethod)
-        {
-            ImageFrame imageFrame = new ImageFrame(id, imagePath, RemoveFrame);
-            listBoxPanel.Children.Add(imageFrame);
-            Frames.Add(imageFrame);
-        }
         
         private Task GetImagesAsync(String[] imagesPath)
         {
@@ -77,7 +70,6 @@ namespace CV
                         txtLoadImage.Text = $"Загрузка: ({i+1} из {imagesPath.Length})";
                         listBoxPanel.Children.Add(imageFrame);
                         Frames.Add(imageFrame);
-                        
                     }));
                 }
             }

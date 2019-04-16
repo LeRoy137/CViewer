@@ -103,8 +103,26 @@
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock VerticalAlignment="Center" Grid.Row="0" Style="{StaticResource txtBlockStyle}">Фотографии:</TextBlock>
-            <Button Name="btnAddImages" Grid.Row="0" HorizontalAlignment="Right" Style="{StaticResource btnAddImageStyle}" Height="20" Width="20" Click="btnAddImages_Click" ToolTip="Добавить фотографии">
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock VerticalAlignment="Center" Grid.Column="0" Style="{StaticResource txtBlockStyle}">Фотографии:</TextBlock>
+                <Grid Grid.Column="3" Margin="50,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="txtLoadImage" VerticalAlignment="Center" Style="{StaticResource txtBlockStyle}">
+                        Загрузка: (0 из 0)
+                    </TextBlock>
+                    <ProgressBar Style="{StaticResource progressBarStyle}" Name="progressImageLoad" Margin="10,3,0,3" Grid.Column="1" Width="300">
+                    </ProgressBar>
+                    </Grid>
+                <Button Margin="15,0,15,0" Grid.Column="1" Name="btnAddImages" Grid.Row="0" HorizontalAlignment="Right" Style="{StaticResource btnAddImageStyle}" Height="20" Width="20" Click="btnAddImages_Click" ToolTip="Добавить фотографии">
                 <Viewbox>
                     <Grid Margin="10">
                         <Grid Name="backgroundGrid" Width="256" Height="256" Visibility="Visible">
@@ -151,6 +169,7 @@
                     </Grid>
                 </Viewbox>
             </Button>
+            </Grid>
             <Border Margin="0,5,0,0" BorderThickness="2" Grid.Row="1" Style="{StaticResource borderStyle}">
                 <ScrollViewer>
                     <WrapPanel Name="listBoxPanel" Background="#FF83788B">
