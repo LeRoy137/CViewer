@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CV"
         mc:Ignorable="d"
-        Title="Добавить запись" Height="450" Width="800" Style="{StaticResource windowStyle}" SizeChanged="Window_SizeChanged">
+        Title="Добавить запись" Closed="Window_Closed" Height="450" Width="800" Style="{StaticResource windowStyle}" SizeChanged="Window_SizeChanged">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>

@@ -193,5 +193,16 @@ namespace CV
             txtNumber.Text = Core.NextId.ToString();
         }
 
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                Core.ClearMemory();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при чистке памяти!");
+            }
+        }
     }
 }

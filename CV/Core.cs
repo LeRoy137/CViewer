@@ -284,6 +284,13 @@ namespace CV
             }
             return record;
         }
+
+        // чистим память
+        public static void ClearMemory()
+        {
+            GC.Collect(0, GCCollectionMode.Forced);
+            GC.WaitForPendingFinalizers();
+        }
     }
 
 
@@ -335,5 +342,7 @@ namespace CV
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
+
+
     }
 }

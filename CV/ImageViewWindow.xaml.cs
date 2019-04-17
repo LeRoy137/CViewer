@@ -39,5 +39,17 @@ namespace CV
         {
             imgElement.Source = new BitmapImage(new Uri(imagePath));
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                Core.ClearMemory();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ошибка при чистке памяти!");
+            }
+        }
     }
 }

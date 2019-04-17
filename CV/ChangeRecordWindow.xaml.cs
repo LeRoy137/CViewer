@@ -233,6 +233,16 @@ namespace CV
             }
         }
 
-
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                Core.ClearMemory();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при чистке памяти!");
+            }
+        }
     }
 }
